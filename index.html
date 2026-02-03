@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ketan's Dev Studio | Python & Web Solutions</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* --- 1. CORE VARIABLES & RESET --- */
+        :root {
+            --bg-dark: #0a192f;
+            --bg-card: #112240;
+            --text-primary: #ccd6f6;
+            --text-secondary: #8892b0;
+            --accent: #64ffda; /* Electric Cyan */
+            --accent-glow: rgba(100, 255, 218, 0.1);
+            --font-main: 'Segoe UI', sans-serif;
+            --font-code: 'Courier New', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- 2. UTILITIES & TYPOGRAPHY --- */
+        h1, h2, h3 { color: var(--text-primary); }
+        .highlight { color: var(--accent); font-family: var(--font-code); }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            font-family: var(--font-code);
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: transparent;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover {
+            background: var(--accent-glow);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--accent-glow);
+        }
+
+        .btn-filled {
+            background: var(--accent);
+            color: var(--bg-dark);
+            font-weight: bold;
+        }
+        
+        .btn-filled:hover { background: #4cdbb9; }
+
+        /* --- 3. NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            position: fixed;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            top: 0;
+        }
+
+        .logo {
+            font-family: var(--font-code);
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-family: var(--font-code);
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        /* --- 4. HERO SECTION --- */
+        .hero {
+            min-height: 90vh; /* Changed from 100vh to accommodate nav */
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin: 20px 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .pre-title { color: var(--accent); font-family: var(--font-code); }
+
+        /* --- 5. FEATURED PROJECT (NEW SECTION) --- */
+        .featured-section {
+            padding: 80px 0;
+        }
+        
+        .project-display {
+            background: var(--bg-card);
+            border-radius: 10px;
+            padding: 40px;
+            border: 1px solid #233554;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .project-info h3 { font-size: 2rem; margin-bottom: 10px; }
+        .project-tags span {
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-right: 15px;
+        }
+        
+        .project-links {
+            background: #0a192f;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .link-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #1d2d50;
+            padding-bottom: 10px;
+        }
+        .link-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        
+        .link-desc { font-size: 0.9rem; color: var(--text-secondary); }
+        .link-btn { font-size: 0.8rem; padding: 5px 15px; }
+
+        /* --- 6. SERVICES GRID --- */
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+        }
+        .section-title::after {
+            content: "";
+            display: block; width: 200px; height: 1px;
+            background: #233554; margin-left: 20px;
+        }
+
+        .services { padding: 60px 0; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            border: 1px solid transparent;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+        .card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
+
+        /* --- 7. CONTACT FORM --- */
+        .contact { padding: 100px 0; text-align: center; max-width: 600px; margin: 0 auto; }
+        .form-control {
+            width: 100%; padding: 15px; background: var(--bg-card);
+            border: 1px solid #233554; color: var(--text-primary);
+            border-radius: 4px; margin-bottom: 20px;
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .project-display { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">&lt;KetanDev /&gt;</div>
+        <div class="nav-links">
+            <a href="#featured"><span class="highlight">01.</span> Projects</a>
+            <a href="#services"><span class="highlight">02.</span> Services</a>
+            <a href="#contact"><span class="highlight">03.</span> Contact</a>
+        </div>
+        <a href="#contact" class="btn">Hire Me</a>
+    </nav>
+
+    <section class="container hero">
+        <div class="hero-content">
+            <p class="pre-title">Hi, my name is Ketan.</p>
+            <h1>I build full-stack <br><span style="color: #8892b0;">automation systems.</span></h1>
+            <p>I don't just build websites; I build businesses. From customer-facing apps to admin dashboards and automated workflows using Python.</p>
+            <a href="#featured" class="btn btn-filled">See My Work</a>
+        </div>
+    </section>
+
+    <section id="featured" class="container featured-section">
+        <h2 class="section-title"><span class="highlight">01.</span> Featured Live Project</h2>
+        
+        <div class="project-display">
+            <div class="project-info">
+                <p class="highlight">Full-Stack Application</p>
+                <h3>Smart Cafe Management System</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                    A complete digital ecosystem for restaurants. This Python-based application handles the entire order lifecycle in real-time. It connects the customer, the manager, and the kitchen staff into one seamless workflow.
+                </p>
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>Django/Flask</span>
+                    <span>Automation</span>
+                    <span>Dashboards</span>
+                </div>
+            </div>
+
+            <div class="project-links">
+                <p style="margin-bottom: 15px; font-weight: bold; color: white;">Try the Live Modules:</p>
+                
+                <div class="link-row">
+                    <div>
+                        <div style="color:white; font-weight:bold;">1. Customer Interface</div>
+                        <div class="link-desc">For placing orders via QR code</div>
+                    </div>
+                    <a href="https://ketansonje.pythonanywhere.com/" target="_blank" class="btn link-btn">Open App</a>
+                </div>
+
+                <div class="link-row">
+                    <div>
+                        <div style="color:white; font-weight:bold;">2. Admin Dashboard</div>
+                        <div class="link-desc">For owners to manage sales/menu</div>
+                    </div>
+                    <a href="https://ketansonje.pythonanywhere.com/admin" target="_blank" class="btn link-btn">View Admin</a>
+                </div>
+
+                <div class="link-row">
+                    <div>
+                        <div style="color:white; font-weight:bold;">3. Kitchen Display</div>
+                        <div class="link-desc">Real-time order screen for chefs</div>
+                    </div>
+                    <a href="https://ketansonje.pythonanywhere.com/display" target="_blank" class="btn link-btn">View Kitchen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="container services">
+        <h2 class="section-title"><span class="highlight">02.</span> Other Services</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-code"></i>
+                <h3>Web Development</h3>
+                <p>Custom landing pages and websites built to convert. Clean, fast code that ranks well on Google.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-server"></i>
+                <h3>Backend Systems</h3>
+                <p>Powerful database management and API integrations using Python to handle complex business logic.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-magic"></i>
+                <h3>Automation</h3>
+                <p>I build bots and scripts to automate boring tasks, saving you hours of manual work every week.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <p class="highlight">03. What's Next?</p>
+        <h2 style="font-size: 3rem; margin-bottom: 20px;">Let's Build Together</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 40px;">
+            Have an idea for a system like the Cafe App? Or need a simple website? Let's talk.
+        </p>
+
+        <form class="contact-form">
+            <input type="text" class="form-control" placeholder="Your Name">
+            <input type="email" class="form-control" placeholder="Your Email">
+            <textarea class="form-control" rows="5" placeholder="Tell me about your project..."></textarea>
+            <button type="submit" class="btn btn-filled">Send Message</button>
+        </form>
+    </section>
+
+    <footer style="text-align: center; padding: 20px; color: var(--text-secondary); font-family: var(--font-code); font-size: 12px;">
+        <p>Designed & Built by Ketan.</p>
+    </footer>
+
+</body>
+</html>
