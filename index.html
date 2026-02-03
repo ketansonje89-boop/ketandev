@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ketan's Dev Studio | Python & Web Solutions</title>
+    <title>Ketan's Dev Studio | Full-Stack Systems</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         /* --- 1. CORE VARIABLES & RESET --- */
@@ -14,6 +14,7 @@
             --text-secondary: #8892b0;
             --accent: #64ffda; /* Electric Cyan */
             --accent-glow: rgba(100, 255, 218, 0.1);
+            --whatsapp: #25D366;
             --font-main: 'Segoe UI', sans-serif;
             --font-code: 'Courier New', monospace;
         }
@@ -106,7 +107,7 @@
 
         /* --- 4. HERO SECTION --- */
         .hero {
-            min-height: 90vh; /* Changed from 100vh to accommodate nav */
+            min-height: 90vh;
             display: flex;
             align-items: center;
             justify-content: flex-start;
@@ -128,7 +129,7 @@
 
         .pre-title { color: var(--accent); font-family: var(--font-code); }
 
-        /* --- 5. FEATURED PROJECT (NEW SECTION) --- */
+        /* --- 5. FEATURED PROJECT (CAFE SYSTEM) --- */
         .featured-section {
             padding: 80px 0;
         }
@@ -204,12 +205,23 @@
         }
         .card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
 
-        /* --- 7. CONTACT FORM --- */
+        /* --- 7. DIRECT CONTACT SECTION (WHATSAPP) --- */
         .contact { padding: 100px 0; text-align: center; max-width: 600px; margin: 0 auto; }
-        .form-control {
-            width: 100%; padding: 15px; background: var(--bg-card);
-            border: 1px solid #233554; color: var(--text-primary);
-            border-radius: 4px; margin-bottom: 20px;
+        
+        .whatsapp-btn {
+            background-color: var(--whatsapp);
+            border-color: var(--whatsapp);
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .whatsapp-btn:hover {
+            background-color: #1ebc57;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2);
         }
 
         /* --- MOBILE --- */
@@ -217,6 +229,8 @@
             .hero h1 { font-size: 2.5rem; }
             .nav-links { display: none; }
             .project-display { grid-template-columns: 1fr; }
+            .project-links { margin-top: 20px; }
+            .whatsapp-btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -314,15 +328,29 @@
         <p class="highlight">03. What's Next?</p>
         <h2 style="font-size: 3rem; margin-bottom: 20px;">Let's Build Together</h2>
         <p style="color: var(--text-secondary); margin-bottom: 40px;">
-            Have an idea for a system like the Cafe App? Or need a simple website? Let's talk.
+            Have an idea for a system like the Cafe App? Or need a simple website?
+            <br>Chat with me directly to discuss your project.
         </p>
 
-        <form class="contact-form">
-            <input type="text" class="form-control" placeholder="Your Name">
-            <input type="email" class="form-control" placeholder="Your Email">
-            <textarea class="form-control" rows="5" placeholder="Tell me about your project..."></textarea>
-            <button type="submit" class="btn btn-filled">Send Message</button>
-        </form>
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            
+            <a href="https://wa.me/919999999999?text=Hi%20Ketan,%20I%20saw%20your%20website%20and%20want%20to%20discuss%20a%20project." 
+               target="_blank" 
+               class="btn whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+
+            <a href="mailto:your.email@gmail.com" 
+               class="btn" 
+               style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; margin-right: 0;">
+                <i class="fas fa-envelope"></i> Send Email
+            </a>
+        </div>
+
+        <p style="margin-top: 30px; color: #8892b0; font-size: 0.9rem;">
+            <i class="fas fa-bolt" style="color: #64ffda; margin-right: 5px;"></i>
+            Typically replies within 2 hours
+        </p>
     </section>
 
     <footer style="text-align: center; padding: 20px; color: var(--text-secondary); font-family: var(--font-code); font-size: 12px;">
